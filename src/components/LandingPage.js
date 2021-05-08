@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography, Paper } from "@material-ui/core";
 import "../styles/LandingPage.css";
+import SearchBox from "./SearchBox";
 
 
 class LandingPage extends React.Component {
@@ -12,6 +13,9 @@ class LandingPage extends React.Component {
             {" "}
             The Shoppies
           </Typography>
+        </div>
+        <div>
+            <SearchBox />
         </div>
         <div className="footer">
           <Typography align="center" color="textSecondary" variant="body2">
