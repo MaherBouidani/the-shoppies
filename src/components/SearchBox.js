@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography, Paper } from "@material-ui/core";
 import SearchBar from "material-ui-search-bar";
+import SearchResult from "./SearchResult";
 
 
 class SearchBox extends React.Component {
@@ -9,7 +10,8 @@ class SearchBox extends React.Component {
         super()
         this.state ={userSearch:undefined,
             searchResult:undefined,
-            errorMessage: undefined
+            errorMessage: undefined,
+            isLoading: false
         };
 
         this.getMovies = this.getMovies.bind(this);
@@ -18,10 +20,12 @@ class SearchBox extends React.Component {
     async getMovies(searchValue){
 
         const response = await fetch(`http://www.omdbapi.com/?apikey=a2455e33&type=movie&s=${searchValue}`);
+        console.log(response)
         const data = await response.json();
         if (response.ok) {
             this.setState({
-              searchResult: data.Search
+              searchResult: data.Search,
+              isLoading: true
             });
           } else {
             this.setState({
@@ -38,11 +42,13 @@ class SearchBox extends React.Component {
         <div>
       <div>
         <SearchBar value ={this.state.userSearch}
-        onChange={(newUserSearch) => this.setState({ userSearch: newUserSearch })}
+        onChange={(newUserSearch) => this.setState({ userSearch: newUserSearch, isLoading:false })}
         onRequestSearch={() => this.getMovies(this.state.userSearch)}
-        onCancelSearch={() => this.setState({userSearch:undefined})}/>
+        onCancelSearch={() => this.setState({userSearch:undefined, isLoading:false})}/>
       </div>
-      <div>{this.state.title}</div>
+      <div>
+          {this.state.isLoading && <SearchResult result={this.state.searchResult} search={this.state.userSearch} />}
+      </div>
       </div>
     );
   }

@@ -1,0 +1,29 @@
+
+.root {
+    width: 90%;
+    height: 90%;
+    margin: 100px 100px 100px 100px;
+}
+.button{
+  margin-left: 20px;
+}
+.list {
+  margin-bottom: 10px;
+}
+.search-result {display: inline-block;
+    text-align-last: left;
+    padding-left: 10px;
+    width: 45%;
+    height: auto;
+  
+  }
+  .nominationBox {display: inline-block;
+    text-align-last: left;
+    position: absolute;
+    padding-left: 10px;
+    margin-left: 20px;
+    width: 45%;
+    height: auto;
+  
+  
+  }
