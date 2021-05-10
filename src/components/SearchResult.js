@@ -52,7 +52,7 @@ class SearchResult extends React.Component{
         let current_index = -1
 
         this.state.nominations.map((movie, index) => {
-            if(movie.id == curent_id){
+            if(movie.id === curent_id){
                 
                 current_index = index
               
