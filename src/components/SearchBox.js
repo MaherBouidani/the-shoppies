@@ -19,7 +19,7 @@ class SearchBox extends React.Component {
 
     async getMovies(searchValue){
 
-        const response = await fetch(`http://www.omdbapi.com/?apikey=a2455e33&type=movie&s=${searchValue}`);
+        const response = await fetch(`https://www.omdbapi.com/?apikey=a2455e33&type=movie&s=${searchValue}`);
         console.log(response)
         const data = await response.json();
         if (response.ok) {
