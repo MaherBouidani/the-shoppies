@@ -98,7 +98,7 @@ class ResultComponent extends React.Component {
           </ul>
         </Paper>
         <Paper className="nominationBox" elevation={3}>
-          <Typography>nominationsList</Typography>
+          <Typography>Nominations</Typography>
 
           <ul>
             {this.state.nominationsList.map((item, index) => {
