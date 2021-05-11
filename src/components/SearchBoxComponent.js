@@ -15,7 +15,7 @@ class SearchBoxComponent extends React.Component {
       userSearch: undefined,
       searchResult: undefined,
       errorMessage: undefined,
-      noDataFromAPI: false,
+      noDataFromAPI: undefined,
       isLoading: false,
       openInformationBar: true,
     };
@@ -30,16 +30,16 @@ class SearchBoxComponent extends React.Component {
     const data = await response.json();
 
     // setting up the state (i.e., searchResult) with the data from the api repsonse
-    
 
     if (response.ok) {
       if (data.Response === "True") {
         this.setState({
           searchResult: data.Search,
           isLoading: true,
+          noDataFromAPI: false,
         });
       } else {
-        this.setState({ noDataFromAPI: true });   //If there is no data available from the API, show an information bar message to the user
+        this.setState({ noDataFromAPI: true, openInformationBar: true }); //If there is no data available from the API, show an information bar message to the user
       }
     } else {
       this.setState({
@@ -72,7 +72,7 @@ class SearchBoxComponent extends React.Component {
             <Snackbar
               open={this.state.openInformationBar}
               autoHideDuration={4000}
-              onClose={() => this.updateInformationBar(true)}
+              onClose={() => this.updateInformationBar(false)}
             >
               <Alert
                 onClose={() => this.updateInformationBar(false)}
