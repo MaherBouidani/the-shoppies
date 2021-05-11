@@ -13,7 +13,7 @@
   display: inline-block;
   text-align-last: left;
   padding-left: 10px;
-  width: 45%;
+  width: 40%;
   height: auto;
 }
 .nominationBox {
@@ -22,6 +22,6 @@
   position: absolute;
   padding-left: 10px;
   margin-left: 20px;
-  width: 45%;
+  width: 40%;
   height: auto;
 }

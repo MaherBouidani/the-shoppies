@@ -1,6 +1,6 @@
 import React from "react";
 import Paper from "@material-ui/core/Paper";
-import "../styles/SearchResultCss.css";
+import "../styles/ResultComponentCss.css";
 import MuiAlert from "@material-ui/lab/Alert";
 import Snackbar from "@material-ui/core/Snackbar";
 import { Typography } from "@material-ui/core";
@@ -12,38 +12,38 @@ function Alert(props) {
 class ResultComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { nominations: [], openSuccessBar: false };
+    this.state = { nominationsList: [], openSuccessBar: false };
     this.addNomination = this.addNomination.bind(this);
     this.removeNomination = this.removeNomination.bind(this);
     this.updateSuccessBar = this.updateSuccessBar.bind(this);
   }
 
   addNomination(e) {
-    let curr = {};
-    curr.title = e.currentTarget.parentNode.innerText;
-    curr.id = e.currentTarget.getAttribute("data");
+    let selectedMovie = {};
+    selectedMovie.title = e.currentTarget.parentNode.innerText;
+    selectedMovie.id = e.currentTarget.getAttribute("data");
 
-    if (this.state.nominations.length < 5) {
+    if (this.state.nominationsList.length < 5) {
       this.setState((prevState) => ({
-        nominations: [...prevState.nominations, curr],
+        nominationsList: [...prevState.nominationsList, selectedMovie]
       }));
       e.target.disabled = true;
     }
   }
 
   removeNomination(e) {
-    let curent_id = e.currentTarget.parentNode.getAttribute("data");
-    let current_index = -1;
+    let selectedMovieId = e.currentTarget.parentNode.getAttribute("data");
+    let currentMovieIndex = -1;
 
-    this.state.nominations.forEach((movie, index) => {
-      if (movie.id === curent_id) {
-        current_index = index;
+    this.state.nominationsList.forEach((movie, index) => {
+      if (movie.id === selectedMovieId) {
+        currentMovieIndex= index;
       }
     });
-
-    if (current_index >= 0) {
-      this.state.nominations.splice(current_index, 1);
-      const button = document.getElementById(curent_id);
+ 
+    if (currentMovieIndex >= 0) {
+      this.state.nominationsList.splice(currentMovieIndex, 1);
+      const button = document.getElementById(selectedMovieId);
       button.disabled = false;
     }
 
@@ -83,7 +83,7 @@ class ResultComponent extends React.Component {
                       onClick={(e) => {
                         this.addNomination(e);
                         this.updateSuccessBar(
-                          this.state.nominations.length >= 4
+                          this.state.nominationsList.length >= 4
                         );
                       }}
                       data={item.imdbID}
@@ -98,10 +98,10 @@ class ResultComponent extends React.Component {
           </ul>
         </Paper>
         <Paper className="nominationBox" elevation={3}>
-          <Typography>Nominations</Typography>
+          <Typography>nominationsList</Typography>
 
           <ul>
-            {this.state.nominations.map((item, index) => {
+            {this.state.nominationsList.map((item, index) => {
               return (
                 <div key={index}>
                   <li className="list" data={item.id}>
