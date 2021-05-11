@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/the-shoppies/static/css/main.82251548.chunk.css",
-    "main.js": "/the-shoppies/static/js/main.059fc227.chunk.js",
-    "main.js.map": "/the-shoppies/static/js/main.059fc227.chunk.js.map",
+    "main.js": "/the-shoppies/static/js/main.e8edca04.chunk.js",
+    "main.js.map": "/the-shoppies/static/js/main.e8edca04.chunk.js.map",
     "runtime-main.js": "/the-shoppies/static/js/runtime-main.29ad69fc.js",
     "runtime-main.js.map": "/the-shoppies/static/js/runtime-main.29ad69fc.js.map",
     "static/js/2.cabd78f3.chunk.js": "/the-shoppies/static/js/2.cabd78f3.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.29ad69fc.js",
     "static/js/2.cabd78f3.chunk.js",
     "static/css/main.82251548.chunk.css",
-    "static/js/main.059fc227.chunk.js"
+    "static/js/main.e8edca04.chunk.js"
   ]
 }
