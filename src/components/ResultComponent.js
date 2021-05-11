@@ -76,7 +76,7 @@ class ResultComponent extends React.Component {
               return (
                 <div key={index}>
                   <li className="list" key={index}>
-                    <span>{item.Title}</span>
+                    <span>{item.Title} ({item.Year})</span>
 
                     <button
                       className="button"
