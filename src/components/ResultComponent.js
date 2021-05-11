@@ -20,12 +20,14 @@ class ResultComponent extends React.Component {
 
   addNomination(e) {
     let selectedMovie = {};
-    selectedMovie.title = e.currentTarget.parentNode.childNodes[0].innerText;
+    selectedMovie.title = e.currentTarget.parentNode.childNodes[1].innerText;
+    selectedMovie.image =
+      e.currentTarget.parentNode.childNodes[0].getAttribute("src");
     selectedMovie.id = e.currentTarget.getAttribute("data");
 
     if (this.state.nominationsList.length < 5) {
       this.setState((prevState) => ({
-        nominationsList: [...prevState.nominationsList, selectedMovie]
+        nominationsList: [...prevState.nominationsList, selectedMovie],
       }));
       e.target.disabled = true;
     }
@@ -34,13 +36,12 @@ class ResultComponent extends React.Component {
   removeNomination(e) {
     let selectedMovieId = e.currentTarget.parentNode.getAttribute("data");
     let currentMovieIndex = -1;
-
     this.state.nominationsList.forEach((movie, index) => {
       if (movie.id === selectedMovieId) {
-        currentMovieIndex= index;
+        currentMovieIndex = index;
       }
     });
- 
+
     if (currentMovieIndex >= 0) {
       this.state.nominationsList.splice(currentMovieIndex, 1);
       const button = document.getElementById(selectedMovieId);
@@ -76,8 +77,15 @@ class ResultComponent extends React.Component {
               return (
                 <div key={index}>
                   <li className="list" key={index}>
-                    <span>{item.Title} ({item.Year})</span>
-
+                    <img
+                      src={item.Poster}
+                      width="70"
+                      height="70"
+                      alt="movie poster"
+                    />
+                    <span>
+                      {item.Title} ({item.Year})
+                    </span>
                     <button
                       className="button"
                       onClick={(e) => {
@@ -105,6 +113,12 @@ class ResultComponent extends React.Component {
               return (
                 <div key={index}>
                   <li className="list" data={item.id}>
+                    <img
+                      src={item.image}
+                      width="70"
+                      height="70"
+                      alt="movie poster"
+                    />
                     <span>{item.title}</span>
                     <button className="button" onClick={this.removeNomination}>
                       Remove

@@ -36,14 +36,14 @@ class SearchBoxComponent extends React.Component {
         this.setState({
           searchResult: data.Search,
           isLoading: true,
-          noDataFromAPI: false
+          noDataFromAPI: false,
         });
       } else {
         this.setState({ noDataFromAPI: true, openInformationBar: true }); //If there is no data available from the API, show an information bar message to the user
       }
     } else {
       this.setState({
-        errorMessage: "Sorry ! Something has gone wrong, please try again!"
+        errorMessage: "Sorry ! Something has gone wrong, please try again!",
       });
     }
   }
