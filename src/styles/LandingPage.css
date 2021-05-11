@@ -1,28 +1,28 @@
 body > #root > div {
-    height: 100vh;
-  }
-  html {
-    background: url("../shoppies_logo.png") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
-  
-  .searchComponent{
-    padding: 60px;
-    margin: 60px;
-    width: auto;
-  }
-  
-  .footer {
-    position: fixed;
-  
-    color : white;
-    width: 100%;
-    bottom: 0;
-    height: 50px;
-    left: 0;
-    right: 0;
-    z-index: 150;
-  }
+  height: 100vh;
+}
+html {
+  background: url("../shoppies_logo.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.searchComponent {
+  padding: 60px;
+  margin: 60px;
+  width: auto;
+}
+
+.footer {
+  position: fixed;
+
+  color: white;
+  width: 100%;
+  bottom: 0;
+  height: 50px;
+  left: 0;
+  right: 0;
+  z-index: 150;
+}

@@ -1,15 +1,14 @@
 import React from "react";
-import { Typography} from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import "../styles/LandingPage.css";
-import SearchBox from "./SearchBox";
-
+import SearchBoxComponent from "./SearchBoxComponent";
 
 class LandingPage extends React.Component {
   render() {
     return (
       <div>
-        <div className ="searchComponent">
-            <SearchBox />
+        <div className="searchComponent">
+          <SearchBoxComponent />
         </div>
         <div className="footer">
           <Typography align="center" color="inherit" variant="body2">
