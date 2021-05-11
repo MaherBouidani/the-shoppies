@@ -9,7 +9,7 @@ https://maherbouidani.github.io/the-shoppies/
 1 - Make sure you have Node and NPM installed:
     run (node -v) and (npm -v) in the terminal command to verify if Node is installed.
 
-    1.1 If there are not installed, visit: https://www.npmjs.com/get-npm to install Node and NPM
+    1.1 If they are not installed, visit: https://www.npmjs.com/get-npm to install Node and NPM
 
 
 2- Navigate to the local repository directory and then: 
