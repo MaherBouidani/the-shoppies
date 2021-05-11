@@ -20,7 +20,7 @@ class ResultComponent extends React.Component {
 
   addNomination(e) {
     let selectedMovie = {};
-    selectedMovie.title = e.currentTarget.parentNode.innerText;
+    selectedMovie.title = e.currentTarget.parentNode.childNodes[0].innerText;
     selectedMovie.id = e.currentTarget.getAttribute("data");
 
     if (this.state.nominationsList.length < 5) {
