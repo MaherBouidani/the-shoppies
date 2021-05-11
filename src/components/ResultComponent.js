@@ -12,10 +12,10 @@ function Alert(props) {
 class ResultComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { nominations: [], openSnackBar: false };
+    this.state = { nominations: [], openSuccessBar: false };
     this.addNomination = this.addNomination.bind(this);
     this.removeNomination = this.removeNomination.bind(this);
-    this.updateSnackBar = this.updateSnackBar.bind(this);
+    this.updateSuccessBar = this.updateSuccessBar.bind(this);
   }
 
   addNomination(e) {
@@ -50,21 +50,22 @@ class ResultComponent extends React.Component {
     this.forceUpdate();
   }
 
-  updateSnackBar(status) {
-    this.setState({ openSnackBar: status });
+  updateSuccessBar(status) {
+    this.setState({ openSuccessBar: status });
   }
-
 
   render() {
     return (
       <div className="root">
         <Snackbar
           autoHideDuration={4000}
-          open={this.state.openSnackBar}
-          onClose={() => this.updateSnackBar(false)}
-          
+          open={this.state.openSuccessBar}
+          onClose={() => this.updateSuccessBar(false)}
         >
-          <Alert onClose={() => this.updateSnackBar(false)} severity="success">
+          <Alert
+            onClose={() => this.updateSuccessBar(false)}
+            severity="success"
+          >
             You have successfully selected your 5 nominees
           </Alert>
         </Snackbar>
@@ -81,7 +82,9 @@ class ResultComponent extends React.Component {
                       className="button"
                       onClick={(e) => {
                         this.addNomination(e);
-                        this.updateSnackBar(this.state.nominations.length >= 4);
+                        this.updateSuccessBar(
+                          this.state.nominations.length >= 4
+                        );
                       }}
                       data={item.imdbID}
                       id={item.imdbID}

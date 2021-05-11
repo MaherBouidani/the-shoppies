@@ -1,6 +1,12 @@
 import React from "react";
 import SearchBar from "material-ui-search-bar";
 import ResultComponent from "./ResultComponent";
+import MuiAlert from "@material-ui/lab/Alert";
+import Snackbar from "@material-ui/core/Snackbar";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 class SearchBoxComponent extends React.Component {
   constructor() {
@@ -9,7 +15,9 @@ class SearchBoxComponent extends React.Component {
       userSearch: undefined,
       searchResult: undefined,
       errorMessage: undefined,
+      noDataFromAPI: false,
       isLoading: false,
+      openInformationBar: true,
     };
 
     this.getMovies = this.getMovies.bind(this);
@@ -22,17 +30,26 @@ class SearchBoxComponent extends React.Component {
     const data = await response.json();
 
     // setting up the state (i.e., searchResult) with the data from the api repsonse
+    
 
     if (response.ok) {
-      this.setState({
-        searchResult: data.Search,
-        isLoading: true,
-      });
+      if (data.Response === "True") {
+        this.setState({
+          searchResult: data.Search,
+          isLoading: true,
+        });
+      } else {
+        this.setState({ noDataFromAPI: true });   //If there is no data available from the API, show an information bar message to the user
+      }
     } else {
       this.setState({
         errorMessage: "Sorry ! Something has gone wrong, please try again!",
       });
     }
+  }
+
+  updateInformationBar(status) {
+    this.setState({ openInformationBar: status });
   }
 
   render() {
@@ -51,6 +68,21 @@ class SearchBoxComponent extends React.Component {
           />
         </div>
         <div>
+          {this.state.noDataFromAPI && (
+            <Snackbar
+              open={this.state.openInformationBar}
+              autoHideDuration={4000}
+              onClose={() => this.updateInformationBar(true)}
+            >
+              <Alert
+                onClose={() => this.updateInformationBar(false)}
+                severity="info"
+              >
+                Sorry ! It is us and not you. We do not have data available at
+                this time
+              </Alert>
+            </Snackbar>
+          )}
           {this.state.isLoading && (
             <ResultComponent
               result={this.state.searchResult}
