@@ -65,6 +65,7 @@ class SearchBoxComponent extends React.Component {
             onCancelSearch={() =>
               this.setState({ userSearch: undefined, isLoading: false })
             }
+            placeholder="Search Movie Title"
           />
         </div>
         <div>
