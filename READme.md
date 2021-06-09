@@ -1,8 +1,3 @@
-# The Live Website: 
-
-https://maherbouidani.github.io/the-shoppies/
-
-
 
 #To Run The Shoppies project Locally:
 
